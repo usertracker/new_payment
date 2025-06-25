@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Booking - Nagai Tourism</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Professional Header -->
+    <header class="professional-header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="logo-text">Nagai Tourism</span>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Packages</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-right">
+                <div class="support-info">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 98765 43210</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Payment Container with Background -->
+    <div class="payment-container-bg">
+        <div class="background-overlay"></div>
+        <div class="container">
+            <!-- Header -->
+            <div class="payment-header">
+                <button class="back-button" onclick="goBack()">
+                    <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Back to Tourism Packages
+                </button>
+                <h1 class="payment-title">Complete Your Booking</h1>
+                <p class="payment-subtitle">Book your dream tour to Nagapattinam</p>
+                
+                <!-- Progress Indicator -->
+                <div class="progress-container">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <span class="step-label">Booking Details</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <span class="step-label">Payment</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <span class="step-label">Confirmation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-content">
+                <!-- Booking Form -->
+                <div class="form-section">
+                    <div class="form-container">
+                        <h2 class="form-title">Tourism Package Booking</h2>
+                        
+                        <form id="bookingForm">
+                            <!-- Package Selection -->
+                            <div class="form-group">
+                                <label class="form-label">Select Tourism Package</label>
+                                <select id="selectedPackage" name="selectedPackage" class="form-input">
+                                    <!-- Options will be loaded by JavaScript -->
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Travel Date *</label>
+                                    <input type="date" id="travelDate" name="travelDate" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Number of People</label>
+                                    <input type="number" id="numberOfPeople" name="numberOfPeople" class="form-input" min="1" max="20" value="1">
+                                </div>
+                            </div>
+
+                            <!-- Primary Traveler Details -->
+                            <div class="traveler-section">
+                                <h3 class="traveler-title">Primary Traveler</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">First Name *</label>
+                                        <input type="text" id="primaryFirstName" name="primaryFirstName" class="form-input" placeholder="Enter first name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name *</label>
+                                        <input type="text" id="primaryLastName" name="primaryLastName" class="form-input" placeholder="Enter last name" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Email Address *</label>
+                                        <input type="email" id="primaryEmail" name="primaryEmail" class="form-input" placeholder="Enter email address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number *</label>
+                                        <input type="tel" id="primaryPhone" name="primaryPhone" class="form-input" placeholder="Enter phone number" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Date of Birth *</label>
+                                        <input type="date" id="primaryDob" name="primaryDob" class="form-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Passport Number</label>
+                                        <input type="text" id="primaryPassport" name="primaryPassport" class="form-input" placeholder="Enter passport number">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Second Traveler Details (shown only if more than 1 person) -->
+                            <div id="secondTravelerSection" class="traveler-section" style="display: none;">
+                                <h3 class="traveler-title">Second Traveler</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">First Name *</label>
+                                        <input type="text" id="secondFirstName" name="secondFirstName" class="form-input" placeholder="Enter first name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name *</label>
+                                        <input type="text" id="secondLastName" name="secondLastName" class="form-input" placeholder="Enter last name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Date of Birth *</label>
+                                        <input type="date" id="secondDob" name="secondDob" class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Passport Number</label>
+                                        <input type="text" id="secondPassport" name="secondPassport" class="form-input" placeholder="Enter passport number">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Transport Options -->
+                            <div class="form-group">
+                                <label class="form-label">Transport Option (Optional)</label>
+                                <div class="radio-grid">
+                                    <label class="radio-option">
+                                        <input type="radio" name="transport" value="none" checked>
+                                        <div class="radio-content">
+                                            <span class="radio-title">No Transport</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="transport" value="car">
+                                        <div class="radio-content">
+                                            <span class="radio-title">Private Car (4+1)</span>
+                                            <span class="radio-price">+₹2000</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="transport" value="suv">
+                                        <div class="radio-content">
+                                            <span class="radio-title">SUV (7+1)</span>
+                                            <span class="radio-price">+₹3000</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="transport" value="bus">
+                                        <div class="radio-content">
+                                            <span class="radio-title">Mini Bus (18+1)</span>
+                                            <span class="radio-price">+₹4000</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Accommodation Type -->
+                            <div class="form-group">
+                                <label class="form-label">Accommodation Type</label>
+                                <div class="radio-grid accommodation-grid">
+                                    <label class="radio-option">
+                                        <input type="radio" name="accommodation" value="standard" checked>
+                                        <div class="radio-content">
+                                            <span class="radio-title">Standard Room</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="accommodation" value="deluxe">
+                                        <div class="radio-content">
+                                            <span class="radio-title">Deluxe Room</span>
+                                            <span class="radio-price">+₹1500/person</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="accommodation" value="suite">
+                                        <div class="radio-content">
+                                            <span class="radio-title">Suite Room</span>
+                                            <span class="radio-price">+₹3000/person</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Additional Services -->
+                            <div class="form-group">
+                                <label class="form-label">Additional Services (Optional)</label>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="services" value="guide">
+                                        <div class="checkbox-content">
+                                            <span class="checkbox-title">Professional Tour Guide</span>
+                                            <span class="checkbox-price">+₹800</span>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="services" value="photography">
+                                        <div class="checkbox-content">
+                                            <span class="checkbox-title">Photography Service</span>
+                                            <span class="checkbox-price">+₹1200</span>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="services" value="meals">
+                                        <div class="checkbox-content">
+                                            <span class="checkbox-title">All Meals Included</span>
+                                            <span class="checkbox-price">+₹1000</span>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="services" value="insurance">
+                                        <div class="checkbox-content">
+                                            <span class="checkbox-title">Travel Insurance</span>
+                                            <span class="checkbox-price">+₹500</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Payment Method Selection -->
+                            <div class="form-group">
+                                <label class="form-label">Payment Method</label>
+                                <div class="payment-methods">
+                                    <label class="payment-option">
+                                        <input type="radio" name="paymentMethod" value="card" checked>
+                                        <div class="payment-content">
+                                            <div class="payment-header">
+                                                <span class="payment-title">Credit/Debit Card</span>
+                                                <div class="card-icons">
+                                                    <img src="https://img.icons8.com/color/20/000000/visa.png" alt="Visa">
+                                                    <img src="https://img.icons8.com/color/20/000000/mastercard.png" alt="Mastercard">
+                                                    <img src="https://img.icons8.com/color/20/000000/amex.png" alt="Amex">
+                                                </div>
+                                            </div>
+                                            <span class="payment-subtitle">Secure payment with SSL encryption</span>
+                                        </div>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="paymentMethod" value="paypal">
+                                        <div class="payment-content">
+                                            <div class="payment-header">
+                                                <span class="payment-title">PayPal</span>
+                                                <div class="paypal-icon">
+                                                    <img src="https://img.icons8.com/color/24/000000/paypal.png" alt="PayPal">
+                                                </div>
+                                            </div>
+                                            <span class="payment-subtitle">Pay with your PayPal account</span>
+                                        </div>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="paymentMethod" value="bank">
+                                        <div class="payment-content">
+                                            <div class="payment-header">
+                                                <span class="payment-title">Bank Transfer</span>
+                                                <div class="bank-icon">
+                                                    <img src="https://img.icons8.com/color/24/000000/bank.png" alt="Bank">
+                                                </div>
+                                            </div>
+                                            <span class="payment-subtitle">Direct bank transfer (2-3 business days)</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Payment Summary -->
+                <div class="summary-section">
+                    <div class="summary-container">
+                        <h3 class="summary-title">Booking Summary</h3>
+                        
+                        <div id="selectedPackageInfo" class="package-info">
+                            <!-- Package info will be loaded by JavaScript -->
+                        </div>
+                        
+                        <div class="summary-details" id="summaryDetails">
+                            <!-- Summary details will be updated by JavaScript -->
+                        </div>
+
+                        <div class="total-amount">
+                            <span>Total Amount</span>
+                            <span id="totalAmount" class="total-price">₹4500</span>
+                        </div>
+
+                        <button id="payNowBtn" class="pay-button" onclick="proceedToPayment()">
+                            <svg class="pay-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                            <span id="payButtonText">Pay Now ₹4500</span>
+                        </button>
+
+                        <div class="security-badges">
+                            <div class="security-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>SSL Secured</span>
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-lock"></i>
+                                <span>256-bit Encryption</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Method Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content payment-modal-content">
+            <div class="modal-header">
+                <h2 id="paymentModalTitle">Complete Payment</h2>
+                <button class="close-modal" onclick="closePaymentModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="paymentModalBody">
+                <!-- Payment form will be loaded based on selected method -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal-content">
+            <div class="success-animation">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            <h2 class="modal-title">Booking Confirmed!</h2>
+            <p class="modal-text">Your Nagapattinam tour has been booked successfully.</p>
+            <div class="booking-details">
+                <div class="booking-detail">
+                    <span class="detail-label">Booking ID:</span>
+                    <span id="bookingId" class="detail-value">NGT2025001</span>
+                </div>
+                <div class="booking-detail">
+                    <span class="detail-label">Email Confirmation:</span>
+                    <span class="detail-value">Sent to your email</span>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="action-btn primary" onclick="downloadReceipt()">
+                    <i class="fas fa-download"></i>
+                    Download Receipt
+                </button>
+                <button class="action-btn secondary" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                    Go to Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="professional-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Nagai Tourism</span>
+                    </div>
+                    <p class="footer-description">
+                        Discover the hidden gems of Nagapattinam with our curated tourism experiences. 
+                        Your journey to unforgettable memories starts here.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Tourism Packages</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Booking Help</a></li>
+                        <li><a href="#">Payment Issues</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nagapattinam, Tamil Nadu, India</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@nagaitourism.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>9 AM - 8 PM (Daily)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Nagai Tourism. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

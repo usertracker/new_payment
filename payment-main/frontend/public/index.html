@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagai Tourism - Discover Nagapattinam</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Professional Animated Header -->
+    <header class="professional-header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo animate-logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="logo-text">Nagai Tourism</span>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="#packages" class="nav-link">Packages</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-right">
+                <div class="support-info animate-pulse-slow">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 98765 43210</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="#packages" class="mobile-nav-link">Packages</a>
+            <a href="#gallery" class="mobile-nav-link">Gallery</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Parallax -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text animate-slideInUp">
+                <h1 class="hero-title">Discover the Magic of Nagapattinam</h1>
+                <p class="hero-subtitle">Experience spiritual heritage, pristine beaches, and cultural treasures</p>
+                <div class="hero-buttons">
+                    <button class="hero-btn primary" onclick="scrollToPackages()">
+                        <i class="fas fa-compass"></i>
+                        Explore Packages
+                    </button>
+                    <button class="hero-btn secondary" onclick="openVirtualTour()">
+                        <i class="fas fa-play"></i>
+                        Virtual Tour
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator animate-bounce">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-count="1000">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Happy Travelers</div>
+                </div>
+                <div class="stat-item" data-count="50">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Destinations</div>
+                </div>
+                <div class="stat-item" data-count="500">
+                    <div class="stat-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Memories Created</div>
+                </div>
+                <div class="stat-item" data-count="24">
+                    <div class="stat-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">24/7 Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <!-- Header Section -->
+        <div class="container">
+            <div class="header-section" id="packages">
+                <div class="header-badge animate-slideInUp">
+                    <div class="line"></div>
+                    <span class="badge-text">NAGAI TOURISM</span>
+                    <div class="line"></div>
+                </div>
+                <h1 class="main-title animate-slideInUp">Unlock the Hidden Gems of</h1>
+                <h2 class="sub-title animate-slideInUp">Nagapattinam</h2>
+                <p class="description animate-slideInUp">
+                    Discover the rich cultural heritage, pristine beaches, and spiritual essence of Nagapattinam. 
+                    Choose from our curated tourism packages for an unforgettable experience.
+                </p>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section animate-slideInUp">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Packages</button>
+                    <button class="filter-btn" data-filter="spiritual">Spiritual</button>
+                    <button class="filter-btn" data-filter="beach">Beach</button>
+                    <button class="filter-btn" data-filter="culture">Culture</button>
+                    <button class="filter-btn" data-filter="adventure">Adventure</button>
+                </div>
+                <div class="sort-dropdown">
+                    <select id="sortPackages">
+                        <option value="default">Sort by Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="duration">Duration</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Tourism Packages Grid -->
+            <div class="packages-grid" id="packagesGrid">
+                <!-- Packages will be loaded by JavaScript -->
+            </div>
+
+            <!-- Interactive Features Section -->
+            <div class="interactive-section">
+                <div class="interactive-grid">
+                    <div class="interactive-card animate-slideInLeft">
+                        <div class="interactive-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>Custom Itinerary Builder</h3>
+                        <p>Create your personalized travel plan with our drag-and-drop itinerary builder</p>
+                        <button class="interactive-btn" onclick="openItineraryBuilder()">
+                            <i class="fas fa-plus"></i>
+                            Build Itinerary
+                        </button>
+                    </div>
+                    <div class="interactive-card animate-slideInUp">
+                        <div class="interactive-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3>Virtual Reality Tours</h3>
+                        <p>Experience destinations in 360° before you visit with our VR preview technology</p>
+                        <button class="interactive-btn" onclick="openVRExperience()">
+                            <i class="fas fa-play"></i>
+                            Start VR Tour
+                        </button>
+                    </div>
+                    <div class="interactive-card animate-slideInRight">
+                        <div class="interactive-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>24/7 Travel Assistant</h3>
+                        <p>Get instant help from our AI-powered travel assistant for all your queries</p>
+                        <button class="interactive-btn" onclick="openChatAssistant()">
+                            <i class="fas fa-robot"></i>
+                            Chat Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="testimonials-section" id="testimonials">
+                <h2 class="section-title animate-slideInUp">What Our Travelers Say</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial-card active">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Amazing experience! The temple heritage tour was absolutely divine. Highly recommended!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=64&h=64&fit=crop&crop=face" alt="Author">
+                                <div>
+                                    <h4>Priya Sharma</h4>
+                                    <span>Delhi, India</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More testimonials will be added by JavaScript -->
+                </div>
+                <div class="testimonial-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section animate-slideInUp">
+                <div class="cta-content">
+                    <h3 class="cta-title">Ready for Your Next Adventure?</h3>
+                    <p class="cta-description">Contact us to create a personalized tour experience just for you!</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary" onclick="openContactForm()">
+                            <i class="fas fa-phone"></i>
+                            Contact Us
+                        </button>
+                        <button class="cta-button secondary" onclick="downloadBrochure()">
+                            <i class="fas fa-download"></i>
+                            Download Brochure
+                        </button>
+                    </div>
+                </div>
+                <div class="cta-image">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" alt="Travel Adventure" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content contact-modal-content">
+            <div class="modal-header">
+                <h2>Contact Our Travel Experts</h2>
+                <button class="close-modal" onclick="closeContactModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Interested Package</label>
+                        <select name="package">
+                            <option>Select Package</option>
+                            <option>Temple Heritage Tour</option>
+                            <option>Beach and Coastal Retreat</option>
+                            <option>Eco-Tourism Adventure</option>
+                            <option>Cultural Immersion Package</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" rows="4" placeholder="Tell us about your travel preferences..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Assistant Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-bubble" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h4>Travel Assistant</h4>
+                <button onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <p>Hello! I'm your travel assistant. How can I help you plan your trip to Nagapattinam?</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="professional-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section animate-slideInUp">
+                    <div class="footer-logo">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Nagai Tourism</span>
+                    </div>
+                    <p class="footer-description">
+                        Discover the hidden gems of Nagapattinam with our curated tourism experiences. 
+                        Your journey to unforgettable memories starts here.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section animate-slideInUp">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Tourism Packages</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section animate-slideInUp">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="openChatAssistant()">Customer Support</a></li>
+                        <li><a href="#">Booking Help</a></li>
+                        <li><a href="#">Payment Issues</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section animate-slideInUp">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nagapattinam, Tamil Nadu, India</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@nagaitourism.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>9 AM - 8 PM (Daily)</span>
+                        </div>
+                    </div>
+                    <div class="newsletter-signup">
+                        <h4>Subscribe to Newsletter</h4>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom animate-slideInUp">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Nagai Tourism. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
